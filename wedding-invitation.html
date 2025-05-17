@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1">
+    <title>Kavin & Anusha - Wedding Invitation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff8ab6;
+            --secondary-color: #a5e7ff;
+            --accent-color: #ffcd69;
+            --text-color: #333;
+            --light-text: #fff;
+            --dark-bg: rgba(51, 51, 51, 0.9);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+            background-color: #fff8f8;
+        }
+        
+        .cursive {
+            font-family: 'Kaushan Script';
+        }
+        
+        .header {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--light-text);
+            width: 90%;
+            max-width: 800px;
+        }
+        
+        .header-title {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: #ff6a9e;
+        }
+        
+        .heart-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .heart {
+            position: absolute;
+            opacity: 0;
+            animation: heartFloat 8s ease-in-out infinite;
+            color: var(--primary-color);
+            font-size: 1rem;
+            z-index: 1;
+        }
+        
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .section {
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .couple-section {
+            background-color: #fff;
+        }
+        
+        .couple-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .person {
+            text-align: center;
+            max-width: 350px;
+        }
+        
+        .person-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .person-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .heart-divider {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 0 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .events-section {
+            background-color: #f9f9f9;
+            position: relative;
+        }
+        
+        .events-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            object-fit: cover;
+        }
+        
+        .event-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(var(--primary-color), var(--secondary-color));
+        }
+        
+        .event-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .event-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .event-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .event-icon {
+            background-color: #fff5f8;
+            color: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1rem;
+        }
+        
+        .gallery-section {
+            background-color: white;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .countdown-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/IMG-20250517-WA0042.jpg') center/cover no-repeat;
+            color: var(--light-text);
+            position: relative;
+        }
+        
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .countdown-item {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+                
+        .location-section {
+            background-color: #f9f9f9;
+        }
+        
+        .map-container {
+            height: 400px;
+            max-width: 800px;
+            margin: 3rem auto 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .location-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .location-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .location-address {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Great Vibes', cursive;
+        }
+        
+        .footer-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .footer-heart {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            animation: beat 1s infinite alternate;
+        }
+        
+        @keyframes beat {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.2);
+            }
+        }
+        
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .music-control:hover {
+            transform: scale(1.1);
+        }
+        
+        .music-icon {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .countdown-item {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+            
+            .event-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .person-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .person-name {
+                font-size: 1.5rem;
+            }
+
+            .event-title {
+                font-size: 1.5rem;
+            }
+
+            .event-details {
+                gap: 1rem;
+            }
+
+            .event-detail {
+                flex: 1 1 100%;
+                justify-content: center;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                padding: 0 1rem;
+            }
+
+            .gallery-item {
+                height: 250px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .location-card {
+                margin: 2rem 1rem;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+
+            .countdown-container {
+                gap: 1rem;
+            }
+            
+            .countdown-item {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+
+            .person-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .heart-divider {
+                margin: 1rem 0;
+            }
+
+            .event-card {
+                margin: 1rem;
+            }
+
+            .gallery-item {
+                height: 200px;
+            }
+
+            .footer-title {
+                font-size: 1.5rem;
+            }
+
+            .footer-text {
+                font-size: 0.9rem;
+            }
+
+            .music-control {
+                width: 40px;
+                height: 40px;
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .music-icon {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Ensure images don't overflow their containers */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Improve touch targets for mobile */
+        button, 
+        .btn, 
+        .music-control,
+        .gallery-item,
+        .event-detail {
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Add momentum scrolling on iOS */
+        html {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Additional animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            transition-delay: 0.6s;
+        }
+        
+        /* Flower decorations */
+        .flower {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .flower-1 {
+            top: 10%;
+            left: 5%;
+            animation: floatAnimation 8s ease-in-out infinite;
+        }
+        
+        .flower-2 {
+            bottom: 10%;
+            right: 5%;
+            animation: floatAnimation 7s ease-in-out infinite 1s;
+        }
+        
+        @keyframes floatAnimation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <img src="assets/IMG-20250517-WA0042.jpg" alt="Wedding Background" class="header-image">
+        <div class="heart-animation" id="heartContainer"></div>
+        <div class="header-content">
+            <h1 class="header-title  cursive">Kavin & Anusha</h1>
+            <p class="header-subtitle">We are getting married!</p>
+            <p class="header-subtitle">8th June 2025</p>
+            <a href="#events" class="btn">View Details</a>
+        </div>
+    </header>
+
+    <!-- Couple Section -->
+    <section class="section couple-section" id="couple">
+        <div class="flower flower-1">❀</div>
+        <h2 class="section-title fade-up">Happy Couple</h2>
+        <div class="couple-container">
+            <div class="person fade-up delay-1">
+                <img src="assets/IMG-20250517-WA0044.jpg" alt="Groom" class="person-image">
+                <h3 class="person-name">Kavin G J</h3>
+                <p>Son of Mr. Joyappa & Mrs. Jayamma</p>
+            </div>
+            
+            <div class="heart-divider fade-up delay-2">
+                <i class="fas fa-heart"></i>
+            </div>
+            
+            <div class="person fade-up delay-3">
+                <img src="assets/IMG-20250517-WA0045.jpg" alt="Bride" class="person-image">
+                <h3 class="person-name">Anusha V M</h3>
+                <p>Daughter of Mr. Mahesh & Mrs. Tara</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Events Section -->
+    <section class="section events-section" id="events">
+        <div class="flower flower-2">❀</div>
+        <h2 class="section-title fade-up">Wedding Events</h2>
+        
+        <div class="event-card fade-up delay-1">
+            <h3 class="event-title">Muhurtham</h3>
+            <div class="event-details">
+                <div class="event-detail">
+                    <div class="event-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div>
+                        <strong>Date</strong>
+                        <p>8th June 2025</p>
+                    </div>
+                </div>
+                
+                <div class="event-detail">
+                    <div class="event-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <strong>Time</strong>
+                        <p>9:50 am - 10:45 am</p>
+                    </div>
+                </div>
+                
+                <div class="event-detail">
+                    <div class="event-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <strong>Venue</strong>
+                        <p>Vokkaligara Samudhaya Bhavana, Sakaleshpur</p>
+                    </div>
+                </div>
+            </div>
+            <a href="https://maps.app.goo.gl/fNDsHiwm71pqPvBm9" target="_blank" class="btn">View Location</a>
+        </div>
+        
+        <div class="event-card fade-up delay-2">
+            <h3 class="event-title">Reception</h3>
+            <div class="event-details">
+                <div class="event-detail">
+                    <div class="event-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div>
+                        <strong>Date</strong>
+                        <p>8th June 2025</p>
+                    </div>
+                </div>
+                
+                <div class="event-detail">
+                    <div class="event-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <strong>Time</strong>
+                        <p>11:30 am onwards</p>
+                    </div>
+                </div>
+                
+                <div class="event-detail">
+                    <div class="event-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <strong>Venue</strong>
+                        <p>Vokkaligara Samudhaya Bhavana, Sakaleshpur</p>
+                    </div>
+                </div>
+            </div>
+            <a href="https://maps.app.goo.gl/fNDsHiwm71pqPvBm9" target="_blank" class="btn">View Location</a>
+        </div>
+        
+        <div class="event-card fade-up delay-3">
+            <h3 class="event-title">Beegaraoota</h3>
+            <div class="event-details">
+                <div class="event-detail">
+                    <div class="event-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div>
+                        <strong>Date</strong>
+                        <p>10th June 2025</p>
+                    </div>
+                </div>
+                
+                <div class="event-detail">
+                    <div class="event-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <strong>Time</strong>
+                        <p>11:30 am onwards</p>
+                    </div>
+                </div>
+                
+                <div class="event-detail">
+                    <div class="event-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <strong>Venue</strong>
+                        <p>Vokkaligara Samudhaya Bhavana, Somwarpete, Kodagu</p>
+                    </div>
+                </div>
+            </div>
+            <a href="https://maps.app.goo.gl/BfCGCjwyrCzdU2716" target="_blank" class="btn">View Location</a>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="section gallery-section" id="gallery">
+        <h2 class="section-title fade-up">Our Beautiful Moments</h2>
+        <div class="gallery">
+            <div class="gallery-item fade-up">
+                <img src="assets/IMG-20250517-WA0046.jpg" alt="Couple Photo 1" class="gallery-img">
+            </div>
+            <div class="gallery-item fade-up delay-1">
+                <img src="assets/IMG-20250517-WA0047.jpg" alt="Couple Photo 2" class="gallery-img">
+            </div>
+            <div class="gallery-item fade-up delay-2">
+                <img src="assets/IMG-20250517-WA0049.jpg" alt="Couple Photo 3" class="gallery-img">
+            </div>
+            <div class="gallery-item fade-up delay-3">
+                <img src="assets/IMG-20250517-WA0043.jpg" alt="Couple Photo 4" class="gallery-img">
+            </div>
+            <!-- <div class="gallery-item fade-up">
+                <img src="assets/IMG-20250517-WA0044.jpg" alt="Couple Photo 5" class="gallery-img">
+            </div>
+            <div class="gallery-item fade-up delay-1">
+                <img src="assets/IMG-20250517-WA0045.jpg" alt="Couple Photo 6" class="gallery-img">
+            </div> -->
+        </div>
+    </section>
+    
+    <!-- Countdown Section -->
+    <section class="section countdown-section" id="countdown">
+        <h2 class="section-title fade-up">Counting Down To The Big Day</h2>
+        <div class="countdown-container">
+            <div class="countdown-item fade-up">
+                <div class="countdown-number" id="days">0</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-item fade-up delay-1">
+                <div class="countdown-number" id="hours">0</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-item fade-up delay-2">
+                <div class="countdown-number" id="minutes">0</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-item fade-up delay-3">
+                <div class="countdown-number" id="seconds">0</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Location Section -->
+    <section class="section location-section" id="location">
+        <h2 class="section-title fade-up">Wedding Location</h2>
+        
+        <div class="location-card fade-up delay-1">
+            <h3 class="location-title">Muhurtham & Reception</h3>
+            <p class="location-address">Vokkaligara Samudhaya Bhavana, Sakaleshpur</p>
+            <div class="map-container">
+                <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.5995504089634!2d75.7804!3d12.9422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU2JzMyLjAiTiA3NcKwNDYnNDkuNCJF!5e0!3m2!1sen!2sin!4v1621337456789!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <a href="https://maps.app.goo.gl/fNDsHiwm71pqPvBm9" target="_blank" class="btn">Open in Google Maps</a>
+        </div>
+        
+        <div class="location-card fade-up delay-2">
+            <h3 class="location-title">Beegaraoota</h3>
+            <p class="location-address">Vokkaligara Samudhaya Bhavana, Somwarpete, Kodagu</p>
+            <div class="map-container">
+                <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3893.7122066857983!2d75.8457469!3d12.6012092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba504d16b872ee7%3A0x312353e3d8517aa4!2sVokkaligara%20Samudaya%20Bhavana!5e0!3m2!1sen!2sin!4v1747495242558!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>            
+            </div>
+            <a href="https://maps.app.goo.gl/BfCGCjwyrCzdU2716" target="_blank" class="btn">Open in Google Maps</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <h2 class="footer-title">Kavin & Anusha</h2>
+        <p class="footer-text">Your presence will add to the celebration of this special day <i class="fas fa-heart footer-heart"></i></p>
+        <p>Looking forward to celebrating with you!</p>
+    </footer>
+    
+    <!-- Music Control -->
+    <div class="music-control" id="musicControl">
+        <i class="fas fa-music music-icon"></i>
+    </div>
+    
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        // Heart animation
+        function createHearts() {
+            const container = document.getElementById('heartContainer');
+            const hearts = ['❤️', '💕', '💖', '💗', '💘'];
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 1.5 + 0.5) + 'rem';
+                heart.style.animationDuration = (Math.random() * 8 + 5) + 's';
+                heart.style.animationDelay = (Math.random() * 5) + 's';
+                container.appendChild(heart);
+            }
+        }
+        
+        // Countdown timer
+        function updateCountdown() {
+            const weddingDate = new Date('June 8, 2025 09:50:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = weddingDate - now;
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
+        }
+        
+        // Scroll animations
+        function checkAnimations() {
+            const fadeUps = document.querySelectorAll('.fade-up');
+            
+            fadeUps.forEach(element => {
+                const position = element.getBoundingClientRect().top;
+                const screenHeight = window.innerHeight;
+                
+                if (position < screenHeight * 0.85) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        // Music control
+        function setupMusic() {
+            const musicControl = document.getElementById('musicControl');
+            const bgMusic = document.getElementById('bgMusic');
+            let isPlaying = false;
+            
+            musicControl.addEventListener('click', function() {
+                if (isPlaying) {
+                    bgMusic.pause();
+                    musicControl.innerHTML = '<i class="fas fa-music music-icon"></i>';
+                } else {
+                    bgMusic.play();
+                    musicControl.innerHTML = '<i class="fas fa-pause music-icon"></i>';
+                }
+                
+                isPlaying = !isPlaying;
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+            updateCountdown();
+            setupMusic();
+            setupSmoothScroll();
+            checkAnimations();
+            
+            // Update countdown every second
+            setInterval(updateCountdown, 1000);
+            
+            // Check for animations on scroll
+            window.addEventListener('scroll', checkAnimations);
+        });
+    </script>
+</body>
+</html>
